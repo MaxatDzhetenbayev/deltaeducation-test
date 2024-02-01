@@ -19,18 +19,20 @@ export const Main = () => {
 
     return (
         <section className='form_root'>
-            <h1>Игра - QUIZ</h1>
             <form className='user_form' onSubmit={handleSaveUserInformation}>
-                <h3>Заполните информацию о себе</h3>
+                <h1>Игра - QUIZ</h1>
                 <section style={{
+                    marginTop: 20,
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 10
                 }}>
-                    <input type="text" name='full_name' placeholder='Ваше ФИО' />
-                    <input type="text" name='age' placeholder='Ваш возраст' />
-                    <input type="text" name='phone' placeholder='Ваш номер телефона' />
-                    <select name="educational_institution">
+                    <h3 style={{ marginTop: 20 }}>Заполните информацию о себе</h3>
+                    <input required type="text" name='full_name' placeholder='Ваше ФИО' />
+                    <input required type="text" name='age' placeholder='Ваш возраст' />
+                    <input required type="text" name='phone' placeholder='Ваш номер телефона' />
+                    <select required name="educational_institution">
+                        <option value="" selected disabled hidden>Выберите свое образовательное учреждение </option>
                         <option value="Школа-лицей №38">Школа-лицей №38</option>
                         <option value="Средняя общеобразовательная школа № 49">Средняя общеобразовательная школа № 49</option>
                         <option value="Средняя общеобразовательная школа № 49">Средняя общеобразовательная школа № 49</option>
@@ -41,8 +43,8 @@ export const Main = () => {
                         <option value="Средняя общеобразовательная школа № 8">Средняя общеобразовательная школа № 8</option>
                         <option value="Школа № 25">Школа № 25</option>
                     </select>
-                    <input type="text" name='cource' placeholder='Ваш класс/курс' />
-                    <input type="submit" value="Начать тест" />
+                    <input required type="text" name='cource' placeholder='Ваш класс/курс' />
+                    <input required type="submit" value="Начать тест" />
                 </section>
             </form>
             <Snowfall />
