@@ -1,6 +1,7 @@
 import { Snowfall } from "react-snowfall"
 import { useNavigate } from 'react-router-dom'
 import '../App.css'
+import { educational_institution } from "../consts/educational_institution"
 
 export const Main = () => {
 
@@ -32,16 +33,12 @@ export const Main = () => {
                     <input required type="text" name='age' placeholder='Ваш возраст' />
                     <input required type="text" name='phone' placeholder='Ваш номер телефона' />
                     <select required name="educational_institution">
-                        <option value="" selected disabled hidden>Выберите свое образовательное учреждение </option>
-                        <option value="Школа-лицей №38">Школа-лицей №38</option>
-                        <option value="Средняя общеобразовательная школа № 49">Средняя общеобразовательная школа № 49</option>
-                        <option value="Средняя общеобразовательная школа № 49">Средняя общеобразовательная школа № 49</option>
-                        <option value="Школа №28">Школа № 28</option>
-                        <option value="Средняя общеобразовательная школа № 20">Средняя общеобразовательная школа № 20</option>
-                        <option value="ВКО КГУ СОШ № 11">ВКО КГУ СОШ № 11</option>
-                        <option value="Средняя общеобразовательная школа № 36">Средняя общеобразовательная школа № 36</option>
-                        <option value="Средняя общеобразовательная школа № 8">Средняя общеобразовательная школа № 8</option>
-                        <option value="Школа № 25">Школа № 25</option>
+                        <option value="" selected disabled hidden>Выберите свое образовательное учреждение</option>
+                        {
+                            educational_institution.map((value) => (
+                                <option value={value} >{value}</option>
+                            ))
+                        }
                     </select>
                     <input required type="text" name='cource' placeholder='Ваш класс/курс' />
                     <input required type="submit" value="Начать тест" />
