@@ -67,3 +67,7 @@ button:focus-visible {
 h1{
   font-size: clamp(20px, 4vw, 24px);
 }
+
+input, select{
+  padding: 10px;
+}
