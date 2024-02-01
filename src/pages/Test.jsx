@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Snowfall } from "react-snowfall"
 import { questions } from '../consts/questions'
 import { ProgressBar } from "../conponents/ProgressBar/ProgrssBar"
-
+import JSConfetti from 'js-confetti'
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -13,6 +14,12 @@ export const Test = () => {
     const [currentQuestion, setCurrentQuestion] = useState(null)
     const [points, setPoints] = useState(0)
     const [isFinished, setIsFinished] = useState(false)
+
+    const navigate = useNavigate()
+
+    const jsConfetti = new JSConfetti()
+
+
 
 
     function handleGetRandomQuestions(questions) {
@@ -53,6 +60,11 @@ export const Test = () => {
         }
         if (currentQuestionIndex >= questionList.length - 1) {
             setIsFinished(true)
+            jsConfetti.addConfetti({
+                emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+                emojiSize: 50,
+                confettiNumber: 60,
+            })
             return
         }
 
@@ -79,21 +91,25 @@ export const Test = () => {
             <section key={currentQuestion.title}>
                 {isFinished
                     ? (<>
-                        <h1 style={{
-                            marginTop: 30
-                        }}>
-                            Итоговый бал: {points}
-                        </h1>
+
                         <section style={{
+                            marginTop: 30,
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            backgroundColor: "rgba(0, 0, 0, 0.27)",
+                            padding: 20,
+                            borderRadius: 15,
                         }}>
+                            <h1>
+                                Итоговый бал: {points}
+                            </h1>
                             <img style={{
                                 width: 300,
                             }}
                                 src={points > 7 ? "./gifs/win.gif" : "./gifs/defeat.gif"}
                             />
+                            <button onClick={() => navigate('/')}>Вернуться в главное окно</button>
                             <audio
                                 controls
                                 loop
@@ -149,7 +165,10 @@ export const Test = () => {
                     )}
 
             </section>
-            <Snowfall />
-        </section>
+            {
+                isFinished || <Snowfall />
+            }
+
+        </section >
     )
 }
