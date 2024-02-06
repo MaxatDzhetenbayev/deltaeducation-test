@@ -44,6 +44,7 @@ export const Main = () => {
                     <input required type="submit" value="Начать тест" />
                 </section>
             </form>
+            <img src="./qr.svg" alt="" style={{marginTop: 40}} />
             <Snowfall />
         </section>
     )
