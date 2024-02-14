@@ -2,6 +2,7 @@ import { Snowfall } from "react-snowfall"
 import { useNavigate } from 'react-router-dom'
 import '../App.css'
 import { educational_institution } from "../consts/educational_institution"
+import emailjs from '@emailjs/browser'
 
 export const Main = () => {
 
@@ -14,6 +15,13 @@ export const Main = () => {
         const formData = Object.fromEntries(new FormData(e.target).entries())
 
         window.localStorage.setItem('user_information', JSON.stringify(formData))
+
+        emailjs.send('service_okoza0b', 'template_omybhpc', formData, 'myx63XfRfUvzWa19x')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+                console.log('FAILED...', err);
+            });
 
         navigate('/test')
     }
@@ -44,7 +52,7 @@ export const Main = () => {
                     <input required type="submit" value="Начать тест" />
                 </section>
             </form>
-            <img src="./qr.svg" alt="" style={{marginTop: 40}} />
+            <img src="./qr.svg" alt="" style={{ marginTop: 40 }} />
             <Snowfall />
         </section>
     )

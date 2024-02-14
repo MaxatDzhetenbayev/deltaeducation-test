@@ -130,6 +130,7 @@ export const Test = () => {
 
                             </h1>
                             <p style={{
+                                color: '#fff',
                                 marginTop: 10,
                                 textAlign: 'justify',
                                 fontWeight: 600
@@ -146,12 +147,14 @@ export const Test = () => {
                                     marginTop: 10,
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    gap: 10
+                                    gap: 10,
+                                    color: '#fff',
                                 }}>
                                     {currentQuestion.answers.map((ans, index) => (
                                         <li key={index}>
                                             <button onClick={() => handleResponse(index)} style={{
-                                                minWidth: 300
+                                                minWidth: 300,
+                                                color: '#fff',
                                             }}>
                                                 {ans}
                                             </button>
