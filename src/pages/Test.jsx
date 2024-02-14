@@ -25,7 +25,7 @@ export const Test = () => {
     function handleGetRandomQuestions(questions) {
         const randomChoiceQuestions = [];
 
-        while (randomChoiceQuestions.length < 10) {
+        while (randomChoiceQuestions.length < 5) {
             const randomIndex = Math.floor(Math.random() * questions.length);
 
             const question = questions[randomIndex];
@@ -107,7 +107,7 @@ export const Test = () => {
                             <img style={{
                                 width: 300,
                             }}
-                                src={points > 7 ? "./gifs/win.gif" : "./gifs/defeat.gif"}
+                                src={points > 4 ? "./gifs/win.gif" : "./gifs/defeat.gif"}
                             />
                             <button onClick={() => navigate('/')}>Вернуться в главное окно</button>
                             <audio
@@ -117,7 +117,7 @@ export const Test = () => {
                                 style={{
                                     visibility: 'hidden'
                                 }}>
-                                <source src={points > 7 ? "./audio/win.mp3" : "./audio/defeat.mp3"} type="audio/mpeg" />
+                                <source src={points > 4 ? "./audio/win.mp3" : "./audio/defeat.mp3"} type="audio/mpeg" />
                             </audio>
                         </section>
                     </>)
